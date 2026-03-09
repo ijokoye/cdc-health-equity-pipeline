@@ -1,0 +1,15 @@
+# data
+data/raw/
+data/interim/
+data/processed/
+*.parquet
+*.csv
+
+# python
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
