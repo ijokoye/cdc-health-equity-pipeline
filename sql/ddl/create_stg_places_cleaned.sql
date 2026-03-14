@@ -18,7 +18,7 @@ SELECT
     high_confidence_limit,
     totalpopulation AS total_population,
     totalpop18plus AS total_pop_18_plus,
-    locationid AS location_id,
+    LPAD(locationid::text, 5, '0') AS location_id,
     categoryid AS category_id,
     measureid AS measure_id,
     datavaluetypeid AS data_value_type_id,
