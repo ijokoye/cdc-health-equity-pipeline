@@ -1,22 +1,22 @@
 <!-- Fill it with: -->
-    •    Dataset name + date/version (from source)
-    •    Row count + column count
-    •    What’s the grain? (county? census tract? state?)
-    •    What fields look like join keys? (FIPS codes, GEOID, state/county)
-    •    Any obvious issues: duplicates, missing key fields, weird encodings
+    -    Dataset name + date/version (from source)
+    -    Row count + column count
+    -   What’s the grain? (county? census tract? state?)
+    -    What fields look like join keys? (FIPS codes, GEOID, state/county)
+    -    Any obvious issues: duplicates, missing key fields, weird encodings
 
 
-Dataset
+## Dataset
 
-CDC PLACES — County Data
+## CDC PLACES — County Data
 
-Grain
+## Grain
 locationid × year × measureid × datavaluetypeid
 
-Key Geography Column
+## Key Geography Column
 locationid
 
-Meaning
+## Meaning
 
 locationid represents the county FIPS code
 Example:
@@ -24,7 +24,7 @@ Example:
 27011
 39113
 
-Join Candidate
+## Join Candidate
 
 SVI dataset uses:
 FIPS
