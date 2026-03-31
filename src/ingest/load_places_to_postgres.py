@@ -5,7 +5,7 @@ This script represents the ingestion step of the pipeline.
 """
 
 import pandas as pd
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 
 # Configuration
 CSV_PATH = "/Users/ijeomaokoye/IdeaProjects/cdc-health-equity-pipeline/data/raw/PLACES__Local_Data_for_Better_Health,_County_Data_2024_release_20260223.csv"
@@ -44,10 +44,13 @@ def load(df, db_uri, table_name):
     print("Loading data into database...")
     engine = create_engine(db_uri)
 
+    with engine.begin() as conn:
+        conn.execute(text(f"TRUNCATE TABLE {table_name};"))
+
     df.to_sql(
         table_name,
         engine,
-        if_exists="replace",
+        if_exists="append",
         index=False,
         chunksize=5000,
         method="multi"
