@@ -14,3 +14,11 @@ Build a reproducible pipeline that ingests CDC datasets, cleans/standardizes the
 ## Day 1
 - [ ] Download CDC dataset(s) into data/raw
 - [ ] Inspect schema, keys, missingness, and geography fields
+
+## Airflow Orchestration
+
+- Set up Airflow locally in a dedicated virtual environment
+- Created DAG: `health_equity_pipeline`
+- Implemented ingestion task using `PythonOperator`
+- Task executes PLACES ingestion script (`load_places_to_postgres.py`)
+- Successfully triggered DAG runs and monitored execution via UI logs
