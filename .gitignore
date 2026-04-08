@@ -6,6 +6,7 @@ data/processed/
 *.csv
 
 # python
+api/node_modules/
 .venv/
 .airflow-home/
 .airflow-venv/
