@@ -1,7 +1,9 @@
 const express = require('express');     // import Express framework
 const { Pool } = require('pg');         // import Postgres connection pool
+const cors = require("cors");
 
 const app = express();                  // create Express app/server object
+app.use(cors());
 const PORT = 3000;                      // choose the port our API will listen on
 
 // create a reusable connection manager to Postgres
