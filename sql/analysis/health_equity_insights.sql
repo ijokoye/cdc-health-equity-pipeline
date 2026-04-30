@@ -27,8 +27,8 @@ SELECT
     l.state_abbr,
     m.measure,
     f.year,
-    s.svi_overall,
-    f.data_value,
+    s.svi_overall AS svi,
+    f.data_value AS obesity,
     f.low_confidence_limit,
     f.high_confidence_limit
 FROM analytics.fact_health_measure f
@@ -74,3 +74,19 @@ GROUP BY
     s.svi_overall
 ORDER BY avg_health_burden DESC
 LIMIT 20;
+
+
+-- SVI against average health outcome the goal is to see the correlation between svi and health outcomes
+SELECT
+    l.location_name,
+    l.state_abbr,
+    s.svi_overall AS svi,
+    ROUND(AVG(f.data_value)::numeric, 1)   AS avg_health_outcome
+FROM analytics.fact_health_measure f
+JOIN analytics.dim_location l  ON f.location_id = l.location_id
+JOIN analytics.dim_svi s  ON f.location_id = s.location_id
+WHERE f.data_value_type_id = 'AgeAdjPrv'
+  AND f.data_value IS NOT NULL
+  AND s.svi_overall IS NOT NULL
+GROUP BY l.location_name, l.state_abbr, s.svi_overall
+ORDER BY s.svi_overall;
